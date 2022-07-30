@@ -89,7 +89,7 @@ class FullSampleHomePage extends StatelessWidget {
                       onClick: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
-                          return SamplesHome();
+                          return const SamplesHome();
                         }));
                       }),
                   const SizedBox(height: 24),
@@ -98,7 +98,7 @@ class FullSampleHomePage extends StatelessWidget {
                       onClick: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
-                          return WidgetsHome();
+                          return const WidgetsHome();
                         }));
                       }),
                   const SizedBox(height: 24),
@@ -107,7 +107,7 @@ class FullSampleHomePage extends StatelessWidget {
                       onClick: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
-                          return TipsHome();
+                          return const TipsHome();
                         }));
                       }),
                   const SizedBox(height: 24),
