@@ -1,5 +1,4 @@
 import 'package:example/lib/color_selector.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class NeumorphicAccessibility extends StatefulWidget {
@@ -40,8 +39,8 @@ class __PageState extends State<_Page> {
   double height = 150.0;
   double width = 150.0;
 
-  Color borderColor;
-  double borderWidth;
+  Color? borderColor;
+  double? borderWidth;
 
   static final minWidth = 50.0;
   static final maxWidth = 200.0;
@@ -71,7 +70,7 @@ class __PageState extends State<_Page> {
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12)),
-                    color: Theme.of(context).accentColor,
+                    color: Theme.of(context).colorScheme.secondary,
                     child: Text(
                       "back",
                       style: TextStyle(color: Colors.white),
@@ -104,7 +103,7 @@ class __PageState extends State<_Page> {
   int selectedConfiguratorIndex = 0;
 
   Widget _configurators() {
-    final Color buttonActiveColor = Theme.of(context).accentColor;
+    final Color buttonActiveColor = Theme.of(context).colorScheme.secondary;
     final Color buttonInnactiveColor = Colors.white;
 
     final Color textActiveColor = Colors.white;
@@ -200,13 +199,13 @@ class __PageState extends State<_Page> {
               ),
             ],
           ),
-          _configuratorsChild(),
+          _configuratorsChild()!,
         ],
       ),
     );
   }
 
-  Widget _configuratorsChild() {
+  Widget? _configuratorsChild() {
     switch (selectedConfiguratorIndex) {
       case 0:
         return styleCustomizer();
@@ -267,7 +266,7 @@ class __PageState extends State<_Page> {
         ColorSelector(
           onColorChanged: (color) {
             setState(() {
-              NeumorphicTheme.of(context)
+              NeumorphicTheme.of(context)!
                   .updateCurrentTheme(NeumorphicThemeData(baseColor: color));
             });
           },
@@ -371,7 +370,7 @@ class __PageState extends State<_Page> {
           child: Slider(
             min: 0,
             max: 10,
-            value: borderWidth,
+            value: borderWidth!,
             onChanged: (value) {
               setState(() {
                 borderWidth = value;
@@ -381,7 +380,7 @@ class __PageState extends State<_Page> {
         ),
         Padding(
           padding: EdgeInsets.only(right: 12),
-          child: Text(borderWidth.floor().toString()),
+          child: Text(borderWidth!.floor().toString()),
         ),
       ],
     );
@@ -513,7 +512,7 @@ class __PageState extends State<_Page> {
   }
 
   Widget shapeWidget() {
-    final Color buttonActiveColor = Theme.of(context).accentColor;
+    final Color buttonActiveColor = Theme.of(context).colorScheme.secondary;
     final Color buttonInnactiveColor = Colors.white;
 
     final Color iconActiveColor = Colors.white;

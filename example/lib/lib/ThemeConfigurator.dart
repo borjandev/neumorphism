@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'ThemeColorSelector.dart';
@@ -48,7 +47,7 @@ class ThemeConfigurator extends StatelessWidget {
 }
 
 class _ThemeConfiguratorDialog extends StatefulWidget {
-  final BuildContext contextContainingTheme;
+  final BuildContext? contextContainingTheme;
 
   _ThemeConfiguratorDialog({this.contextContainingTheme});
 
@@ -71,7 +70,7 @@ class _ThemeConfiguratorState extends State<_ThemeConfiguratorDialog> {
   }
 
   Widget intensitySelector() {
-    final intensity = NeumorphicTheme.intensity(widget.contextContainingTheme);
+    final intensity = NeumorphicTheme.intensity(widget.contextContainingTheme!)!;
     return Row(
       children: <Widget>[
         Padding(
@@ -86,8 +85,8 @@ class _ThemeConfiguratorState extends State<_ThemeConfiguratorDialog> {
             onChanged: (value) {
               setState(() {
                 NeumorphicTheme.update(
-                  widget.contextContainingTheme,
-                  (current) => current.copyWith(
+                  widget.contextContainingTheme!,
+                  (current) => current!.copyWith(
                     intensity: value,
                   ),
                 );
@@ -107,7 +106,7 @@ class _ThemeConfiguratorState extends State<_ThemeConfiguratorDialog> {
   }
 
   Widget depthSelector() {
-    final depth = NeumorphicTheme.depth(widget.contextContainingTheme);
+    final depth = NeumorphicTheme.depth(widget.contextContainingTheme!)!;
 
     return Row(
       children: <Widget>[
@@ -123,8 +122,8 @@ class _ThemeConfiguratorState extends State<_ThemeConfiguratorDialog> {
             onChanged: (value) {
               setState(() {
                 NeumorphicTheme.update(
-                  widget.contextContainingTheme,
-                  (current) => current.copyWith(depth: value),
+                  widget.contextContainingTheme!,
+                  (current) => current!.copyWith(depth: value),
                 );
               });
             },

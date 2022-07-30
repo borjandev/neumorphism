@@ -1,15 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class WidgetsSample extends StatefulWidget {
-  WidgetsSample({Key key}) : super(key: key);
+  WidgetsSample({Key? key}) : super(key: key);
 
   @override
   createState() => _ContainersListPageState();
 }
 
 class _ContainersListPageState extends State<WidgetsSample> {
-  int _groupValue;
+  int? _groupValue;
   bool _switchConcaveEnabled = false;
   bool _switchConvexEnabled = false;
   bool _switchFlatEnabled = false;
@@ -123,7 +122,7 @@ class _ContainersListPageState extends State<WidgetsSample> {
           ),
           value: 1,
           groupValue: _groupValue,
-          onChanged: (value) {
+          onChanged: (dynamic value) {
             setState(() {
               _groupValue = value;
             });
@@ -143,7 +142,7 @@ class _ContainersListPageState extends State<WidgetsSample> {
           ),
           value: 2,
           groupValue: _groupValue,
-          onChanged: (value) {
+          onChanged: (dynamic value) {
             setState(() {
               _groupValue = value;
             });
@@ -163,7 +162,7 @@ class _ContainersListPageState extends State<WidgetsSample> {
           ),
           value: 3,
           groupValue: _groupValue,
-          onChanged: (value) {
+          onChanged: (dynamic value) {
             setState(() {
               _groupValue = value;
             });
@@ -173,9 +172,9 @@ class _ContainersListPageState extends State<WidgetsSample> {
     );
   }
 
-  bool check1 = false;
-  bool check2 = false;
-  bool check3 = false;
+  bool? check1 = false;
+  bool? check2 = false;
+  bool? check3 = false;
 
   Widget _buildChecks() {
     return Row(
@@ -186,7 +185,7 @@ class _ContainersListPageState extends State<WidgetsSample> {
         ),
         SizedBox(width: 12),
         NeumorphicCheckbox(
-          value: check1,
+          value: check1!,
           onChanged: (value) {
             setState(() {
               check1 = value;
@@ -195,7 +194,7 @@ class _ContainersListPageState extends State<WidgetsSample> {
         ),
         SizedBox(width: 12),
         NeumorphicCheckbox(
-          value: check2,
+          value: check2!,
           onChanged: (value) {
             setState(() {
               check2 = value;
@@ -204,7 +203,7 @@ class _ContainersListPageState extends State<WidgetsSample> {
         ),
         SizedBox(width: 12),
         NeumorphicCheckbox(
-          value: check3,
+          value: check3!,
           onChanged: (value) {
             setState(() {
               check3 = value;
