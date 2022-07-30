@@ -1,10 +1,12 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-void main() => runApp(NeumorphicPlayground());
+void main() => runApp(const NeumorphicPlayground());
 
 class NeumorphicPlayground extends StatefulWidget {
+  const NeumorphicPlayground({Key? key}) : super(key: key);
+
   @override
-  _NeumorphicPlaygroundState createState() => _NeumorphicPlaygroundState();
+  State createState() => _NeumorphicPlaygroundState();
 }
 
 class _NeumorphicPlaygroundState extends State<NeumorphicPlayground> {

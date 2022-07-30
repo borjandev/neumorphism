@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return NeumorphicApp(
+    return const NeumorphicApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
       title: 'Flutter Neumorphic',
@@ -23,6 +23,8 @@ class MyApp extends StatelessWidget {
 }
 
 class FullSampleHomePage extends StatelessWidget {
+  const FullSampleHomePage({Key? key}) : super(key: key);
+
   Widget _buildButton({required String text, VoidCallback? onClick}) {
     return NeumorphicButton(
       margin: const EdgeInsets.only(bottom: 12),
@@ -30,22 +32,23 @@ class FullSampleHomePage extends StatelessWidget {
         vertical: 18,
         horizontal: 24,
       ),
-      style: NeumorphicStyle(
-        boxShape: NeumorphicBoxShape.roundRect(
-          BorderRadius.circular(12),
-        ),
-        // border: NeumorphicBorder(
-        //   isEnabled: true,
-        //   width: 0.3,
-        // ),
-        shape: NeumorphicShape.flat,
-      ),
+      // style: NeumorphicStyle(
+      //   boxShape: NeumorphicBoxShape.roundRect(
+      //     BorderRadius.circular(12),
+      //   ),
+      //   // border: NeumorphicBorder(
+      //   //   isEnabled: true,
+      //   //   width: 0.3,
+      //   // ),
+      //   shape: NeumorphicShape.flat,
+      // ),
       onPressed: onClick,
       child: Center(
-          child: Text(
-        text,
-        style: const TextStyle(color: Colors.white),
-      )),
+        child: Text(
+          text,
+          style: const TextStyle(color: Colors.white),
+        ),
+      ),
     );
   }
 
