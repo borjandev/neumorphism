@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
 class FullSampleHomePage extends StatelessWidget {
   Widget _buildButton({required String text, VoidCallback? onClick}) {
     return NeumorphicButton(
-      margin: EdgeInsets.only(bottom: 12),
-      padding: EdgeInsets.symmetric(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.symmetric(
         vertical: 18,
         horizontal: 24,
       ),
@@ -40,19 +40,19 @@ class FullSampleHomePage extends StatelessWidget {
         // ),
         shape: NeumorphicShape.flat,
       ),
+      onPressed: onClick,
       child: Center(
           child: Text(
         text,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       )),
-      onPressed: onClick,
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return NeumorphicTheme(
-      theme: NeumorphicThemeData(depth: 8),
+      theme: const NeumorphicThemeData(depth: 8),
       child: Scaffold(
         backgroundColor: NeumorphicColors.background,
         body: SafeArea(
@@ -73,7 +73,7 @@ class FullSampleHomePage extends StatelessWidget {
                       }));
                     },
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   _buildButton(
                     text: "Text Playground",
                     onClick: () {
@@ -83,7 +83,7 @@ class FullSampleHomePage extends StatelessWidget {
                       }));
                     },
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   _buildButton(
                       text: "Samples",
                       onClick: () {
@@ -92,7 +92,7 @@ class FullSampleHomePage extends StatelessWidget {
                           return SamplesHome();
                         }));
                       }),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   _buildButton(
                       text: "Widgets",
                       onClick: () {
@@ -101,7 +101,7 @@ class FullSampleHomePage extends StatelessWidget {
                           return WidgetsHome();
                         }));
                       }),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   _buildButton(
                       text: "Tips",
                       onClick: () {
@@ -110,16 +110,16 @@ class FullSampleHomePage extends StatelessWidget {
                           return TipsHome();
                         }));
                       }),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   _buildButton(
                       text: "Accessibility",
                       onClick: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
-                          return NeumorphicAccessibility();
+                          return const NeumorphicAccessibility();
                         }));
                       }),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                 ],
               ),
             ),

@@ -1,4 +1,3 @@
-
 import '../../flutter_neumorphic.dart';
 
 export 'inherited_neumorphic_theme.dart';
@@ -44,13 +43,13 @@ class NeumorphicTheme extends StatefulWidget {
   final Widget child;
   final ThemeMode themeMode;
 
-  NeumorphicTheme({
+  const NeumorphicTheme({
     Key? key,
     required this.child,
     this.theme = neumorphicDefaultTheme,
     this.darkTheme = neumorphicDefaultDarkTheme,
     this.themeMode = ThemeMode.system,
-  });
+  }) : super(key: key);
 
   @override
   _NeumorphicThemeState createState() => _NeumorphicThemeState();
@@ -92,16 +91,15 @@ class NeumorphicTheme extends StatefulWidget {
     return currentTheme(context).disabledColor;
   }
 
-  static double? intensity(BuildContext context) {
+  static double intensity(BuildContext context) {
     return currentTheme(context).intensity;
   }
 
-  static double? depth(BuildContext context) {
+  static double depth(BuildContext context) {
     return currentTheme(context).depth;
   }
 
-  static double? embossDepth(BuildContext context) {
-    if (currentTheme(context).depth == null) return null;
+  static double embossDepth(BuildContext context) {
     return -currentTheme(context).depth.abs();
   }
 

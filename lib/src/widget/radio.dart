@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'button.dart';
 import 'container.dart';
 
-typedef void NeumorphicRadioListener<T>(T value);
+typedef NeumorphicRadioListener<T> = void Function(T value);
 
 /// A Style used to customize a [NeumorphicRadio]
 ///
@@ -162,7 +162,8 @@ class NeumorphicRadio<T> extends StatelessWidget {
   final Duration duration;
   final Curve curve;
 
-  NeumorphicRadio({
+  const NeumorphicRadio({
+    Key? key,
     this.child,
     this.style = const NeumorphicRadioStyle(),
     this.value,
@@ -172,17 +173,17 @@ class NeumorphicRadio<T> extends StatelessWidget {
     this.groupValue,
     this.onChanged,
     this.isEnabled = true,
-  });
+  }) : super(key: key);
 
-  bool get isSelected => this.value != null && this.value == this.groupValue;
+  bool get isSelected => value != null && value == groupValue;
 
   void _onClick() {
-    if (this.onChanged != null) {
-      if (this.value == this.groupValue) {
+    if (onChanged != null) {
+      if (value == groupValue) {
         //unselect
-        this.onChanged!(null);
+        onChanged!(null);
       } else {
-        this.onChanged!(this.value);
+        onChanged!(value);
       }
     }
   }
@@ -192,17 +193,16 @@ class NeumorphicRadio<T> extends StatelessWidget {
     final NeumorphicThemeData theme = NeumorphicTheme.currentTheme(context);
 
     final double selectedDepth =
-        -1 * (this.style.selectedDepth ?? theme.depth).abs();
-    final double unselectedDepth =
-        (this.style.unselectedDepth ?? theme.depth).abs();
+        -1 * (style.selectedDepth ?? theme.depth).abs();
+    final double unselectedDepth = (style.unselectedDepth ?? theme.depth).abs();
 
     double depth = isSelected ? selectedDepth : unselectedDepth;
-    if (!this.isEnabled) {
+    if (!isEnabled) {
       depth = 0;
     }
 
-    final Color unselectedColor = this.style.unselectedColor ?? theme.baseColor;
-    final Color selectedColor = this.style.selectedColor ?? unselectedColor;
+    final Color unselectedColor = style.unselectedColor ?? theme.baseColor;
+    final Color selectedColor = style.selectedColor ?? unselectedColor;
 
     final Color color = isSelected ? selectedColor : unselectedColor;
 
@@ -210,22 +210,22 @@ class NeumorphicRadio<T> extends StatelessWidget {
       onPressed: () {
         _onClick();
       },
-      duration: this.duration,
-      curve: this.curve,
-      padding: this.padding,
+      duration: duration,
+      curve: curve,
+      padding: padding,
       pressed: isSelected,
       minDistance: selectedDepth,
-      child: this.child,
       style: NeumorphicStyle(
-        border: this.style.border,
+        border: style.border,
         color: color,
-        boxShape: this.style.boxShape,
-        lightSource: this.style.lightSource ?? theme.lightSource,
-        disableDepth: this.style.disableDepth,
-        intensity: this.style.intensity,
+        boxShape: style.boxShape,
+        lightSource: style.lightSource ?? theme.lightSource,
+        disableDepth: style.disableDepth,
+        intensity: style.intensity,
         depth: depth,
-        shape: this.style.shape ?? NeumorphicShape.flat,
+        shape: style.shape ?? NeumorphicShape.flat,
       ),
+      child: child,
     );
   }
 }

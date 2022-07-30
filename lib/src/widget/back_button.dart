@@ -21,8 +21,8 @@ class NeumorphicBackButton extends StatelessWidget {
       style: style,
       padding: padding,
       tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-      child: forward ? nThemeIcons.forwardIcon : nThemeIcons.backIcon,
       onPressed: onPressed ?? () => Navigator.maybePop(context),
+      child: forward ? nThemeIcons.forwardIcon : nThemeIcons.backIcon,
     );
   }
 }

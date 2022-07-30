@@ -19,11 +19,11 @@ class ColorSelector extends StatelessWidget {
         _changeColor(context);
       },
       child: Container(
-        height: this.height,
-        width: this.width,
+        height: height,
+        width: width,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: this.color,
+            color: color,
             border: Border.all(
               color: Colors.grey,
               width: 1,
@@ -41,7 +41,7 @@ class ColorSelector extends StatelessWidget {
             content: SingleChildScrollView(
               child: ColorPicker(
                 pickerColor: color!,
-                onColorChanged: this.onColorChanged!,
+                onColorChanged: onColorChanged!,
                 showLabel: true,
                 pickerAreaHeightPercent: 0.8,
               ),

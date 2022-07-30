@@ -78,7 +78,7 @@ class NeumorphicAppBar extends StatefulWidget implements PreferredSizeWidget {
 
   final double padding;
 
-  NeumorphicAppBar({
+  const NeumorphicAppBar({
     Key? key,
     this.title,
     this.buttonPadding,
@@ -93,15 +93,16 @@ class NeumorphicAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.titleSpacing = NavigationToolbar.kMiddleSpacing,
     this.actionSpacing = defaultSpacing,
     this.padding = 16,
-  })  : preferredSize = Size.fromHeight(toolbarHeight),
+  })  : preferredSize = const Size.fromHeight(toolbarHeight),
         super(key: key);
 
   @override
   NeumorphicAppBarState createState() => NeumorphicAppBarState();
 
   bool _getEffectiveCenterTitle(ThemeData theme, NeumorphicThemeData nTheme) {
-    if (centerTitle != null || nTheme.appBarTheme.centerTitle != null)
+    if (centerTitle != null || nTheme.appBarTheme.centerTitle != null) {
       return centerTitle ?? nTheme.appBarTheme.centerTitle!;
+    }
     switch (theme.platform) {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
@@ -116,9 +117,8 @@ class NeumorphicAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class NeumorphicAppBarTheme extends InheritedWidget {
-  final Widget child;
-
-  NeumorphicAppBarTheme({required this.child}) : super(child: child);
+  const NeumorphicAppBarTheme({Key? key, required Widget child})
+      : super(key: key, child: child);
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) {
@@ -149,12 +149,12 @@ class NeumorphicAppBarState extends State<NeumorphicAppBar> {
         leading = NeumorphicButton(
           padding: widget.buttonPadding,
           style: widget.buttonStyle,
-          child: nTheme?.current?.appBarTheme.icons.menuIcon,
           onPressed: _handleDrawerButton,
           tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+          child: nTheme?.current?.appBarTheme.icons.menuIcon,
         );
       } else {
-        if (canPop)
+        if (canPop) {
           leading = useCloseButton
               ? NeumorphicCloseButton(
                   padding: widget.buttonPadding,
@@ -164,6 +164,7 @@ class NeumorphicAppBarState extends State<NeumorphicAppBar> {
                   padding: widget.buttonPadding,
                   style: widget.buttonStyle,
                 );
+        }
       }
     }
     if (leading != null) {
@@ -209,9 +210,9 @@ class NeumorphicAppBarState extends State<NeumorphicAppBar> {
         child: NeumorphicButton(
           padding: widget.buttonPadding,
           style: widget.buttonStyle,
-          child: nTheme?.current?.appBarTheme.icons.menuIcon,
           onPressed: _handleDrawerButtonEnd,
           tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+          child: nTheme?.current?.appBarTheme.icons.menuIcon,
         ),
       );
     }

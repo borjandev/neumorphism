@@ -19,8 +19,8 @@ class NeumorphicCloseButton extends StatelessWidget {
       style: style,
       padding: padding,
       tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
-      child: nThemeIcons.closeIcon,
       onPressed: onPressed ?? () => Navigator.maybePop(context),
+      child: nThemeIcons.closeIcon,
     );
   }
 }
